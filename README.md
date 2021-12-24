@@ -1,27 +1,109 @@
-# AngularAdmin
+From the course Angular and NodeJS: A Practical Guide with Typescript by Antonio Papa
+https://www.udemy.com/course/angular-node-admin/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
+Added my notes and every command used in the project, hope you find this useful in learning about Angular. :)
 
-## Development server
+ng new angular-admin --skip-git
+	-yes routing, css
+	
+ng g c nav
+ng g c menu
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ng g m public
+ng g m secure
 
-## Code scaffolding
+ng g c secure
+ng g c public
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng g c public/login
+ng g c public/register
 
-## Build
+// for api requests
+ng g s services/auth
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+// DAO
+// User has a role
+//
+ng g i interfaces/user
+ng g i interfaces/role
+ng g i interfaces/permission
+ng g i interfaces/product
+ng g i interfaces/order
+ng g i interfaces/order-item
 
-## Running unit tests
+ng g interceptor interceptors/credential --skip-tests|--spec=false
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ng g c secure/profile --skip-tests
+ng g c secure/dashboard --skip-tests
+ng g c secure/users --skip-tests
+ng g c secure/users/user-create --skip-tests
+ng g c secure/users/user-edit --skip-tests
+ng g c secure/roles --skip-tests
+ng g c secure/roles/role-create --skip-tests
+ng g c secure/roles/role-edit --skip-tests
+ng g c secure/products --skip-tests
+ng g c secure/products/product-create --skip-tests
+ng g c secure/products/product-edit --skip-tests
+ng g c secure/components/paginator --skip-tests
+ng g c secure/components/upload --skip-tests
+ng g c secure/orders --skip-tests
 
-## Running end-to-end tests
+ng g s services/user --skip-tests
+ng g s services/role --skip-tests
+ng g s services/rest --skip-tests
+ng g s services/permission --skip-tests
+ng g s services/product --skip-tests
+ng g s services/order --skip-tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+To not generate test files (doesn't work: Data path "" must NOT have additional properties(skipTests).):
+"@schematics/angular:component": {
+  "skipTests": true
+},
+"@schematics/angular:module": {
+  "skipTests": true
+},
+"@schematics/angular:service": {
+  "skipTests": true
+},
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+npm i c3
+npm i -D @types/c3
+---
+
+---Angular Fixes
+
+Fix: error TS2564: Property has no initializer and is not definitely assigned in the constructor.
+tsconfig.json (under compilerOptions):
+    "noImplicitReturns": false,
+    "strictPropertyInitialization": false,
+	
+---Angular2+ Concepts
+
+<router-outlet> => loads (child) components dynamically
+	-master-detail
+
+normal forms => 2 way data binding
+reactive forms
+
+generated services can be injected as a dependency in components
+
+@Input - to pass variables from parent component to child component (via html attribute)
+	-So only one component calls api once instead of multiple components calling the same api.
+	
+Interceptors => to do something additional for every request made. e.g. add credentials (cookies)
+
+Event Emitter => Like redux/vuex to store global data (for component events to update other components)
+	-Emit and Subscribe to an event
+	-So only one component calls api once instead of multiple components calling the same thing.
+
+[routerLink] vs routerLink
+	-brackets means you pass in variable (dynamic)
+	-w/o brackets means a string
+	
+(click/submit)
+	-parentheses mean event, which will trigger/call a function.
+	
+<ng-container></ng-container> doesn't show as an html element
