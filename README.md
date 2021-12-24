@@ -1,6 +1,9 @@
 ```plaintext
 From the course Angular and NodeJS: A Practical Guide with Typescript by Antonio Papa
 https://www.udemy.com/course/angular-node-admin/
+and
+The Complete Angular & NestJS Course
+https://www.udemy.com/course/the-complete-angular-nestjs-course/
 
 Added my notes and every command used in the project, hope you find this useful in learning about Angular. :)
 
