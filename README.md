@@ -1,3 +1,4 @@
+```plaintext
 From the course Angular and NodeJS: A Practical Guide with Typescript by Antonio Papa
 https://www.udemy.com/course/angular-node-admin/
 
@@ -107,3 +108,4 @@ Event Emitter => Like redux/vuex to store global data (for component events to u
 	-parentheses mean event, which will trigger/call a function.
 	
 <ng-container></ng-container> doesn't show as an html element
+```
